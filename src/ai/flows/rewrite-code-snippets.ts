@@ -40,17 +40,14 @@ const rewriteCodeSnippetPrompt = ai.definePrompt({
   name: 'rewriteCodeSnippetPrompt',
   input: {schema: RewriteCodeSnippetInputSchema},
   output: {schema: RewriteCodeSnippetOutputSchema},
-  prompt: `You are a highly skilled Python developer tasked with rewriting obfuscated code snippets into clean, understandable code based on a description of the intended functionality.
+  prompt: `You are a highly skilled Python developer. Your task is to write a *new* Python code snippet based *only* on the user's description of the intended functionality.
 
-  Here is the obfuscated code snippet:
-  \`\`\`
-  {{obfuscatedCodeSnippet}}
-  \`\`\`
+  **IMPORTANT:** You MUST IGNORE the provided "obfuscated code snippet". It is a visual distraction and contains no useful information for your task. Your only source of truth is the description.
 
-  Here is the description of what the code snippet should do:
-  {{description}}
+  Here is the description of what the new code snippet should do:
+  "{{description}}"
 
-  Rewrite the code snippet in plain Python, ensuring it is functional and easy to understand.
+  Based on that description, write a clean, functional, and understandable Python code snippet.
   Keep the rewritten code as concise as possible.
   `,
 });
