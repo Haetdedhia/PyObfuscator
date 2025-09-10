@@ -14,7 +14,7 @@ export function Header() {
           </svg>
         </div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-          Code Alchemist
+          Code-Squid
         </h1>
       </div>
     </header>

@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Code Alchemist',
-  description: 'An intelligent tool for creative code obfuscation.',
+  title: 'Code-Squid',
+  description: 'An intelligent tool for creative code obfuscation, inspired by Squid Game.',
 };
 
 export default function RootLayout({
