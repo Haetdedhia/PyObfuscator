@@ -92,7 +92,7 @@ const obfuscateCodeFlow = ai.defineFlow(
     // 3. Assemble the final Python one-liner.
     // The lambda function is the self-contained decryptor.
     // We use obscure characters for variable names in the lambda.
-    const obfuscatedCode = `exec((lambda 𓋹, 𓋺, 𝑓: ''.join([chr(ord(𓋹) ^ ord(𓋺)) for 𓋹, 𓋺 in zip(𓋹, 𓋺)]))('''${encryptedString}''', '''${key}'''))`;
+    const obfuscatedCode = `exec((lambda 𓋹, 𓋺: ''.join([chr(ord(c1) ^ ord(c2)) for c1, c2 in zip(𓋹, 𓋺)]))('''${encryptedString}''', '''${key}'''))`;
     
     return { obfuscatedCode };
   }
