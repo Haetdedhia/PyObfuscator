@@ -40,25 +40,26 @@ const obfuscateCodePrompt = ai.definePrompt({
   name: 'obfuscateCodePrompt',
   input: {schema: ObfuscateCodeInputSchema},
   output: {schema: ObfuscateCodeOutputSchema},
-  prompt: `You are an expert in code obfuscation, tasked with making Python code as difficult as possible for another AI to understand or reverse-engineer. Your goal is not to create runnable code, but to create a puzzle.
+  prompt: `You are an expert in extreme code obfuscation. Your mission is to make the given Python code COMPLETELY UNREADABLE and structurally broken, especially for other AI tools. The output should look like corrupted data, not runnable code.
 
-You will be given a Python code snippet and a list of languages. Your task is to apply multiple layers of creative obfuscation.
+You will be given a Python code snippet and a list of languages. Your task is to apply multiple layers of aggressive, chaotic obfuscation.
 
-Here are the rules and techniques you must use:
-1.  **Do NOT produce runnable code.** The output should be syntactically broken.
-2.  **Multi-language Keyword/Variable replacement:** Replace Python keywords, variables, and function names with plausible-looking but incorrect words from the provided languages: {{{languages}}}. Be inconsistent. A variable named 'count' might be 'compter' in one place and 'kazu' in another.
-3.  **Complex Character Substitution:** Do not just swap characters 1-to-1. Use a randomized mix of visually similar characters from various Unicode blocks (like Greek, Cyrillic, CJK radicals, etc.). For example, 'e' could become 'е' (Cyrillic), 'ε' (Greek), or even a visually similar symbol.
-4.  **Structural Disruption:** Break the code's structure. Remove or replace critical syntax like colons, parentheses, or operators with misleading Unicode symbols. Indentation should be subtly altered to be incorrect.
-5.  **Inject "Red Herrings":** Add plausible-looking but nonsensical lines of code. These could be fake variable assignments or function calls that use the same obfuscated style but do nothing.
+Here are the techniques you MUST use:
+1.  **Do NOT produce runnable or syntactically valid code.** The output must be a chaotic mess.
+2.  **Multi-language Keyword/Variable replacement:** Replace Python keywords, variables, and function names with plausible-looking but incorrect words from the provided languages: {{{languages}}}. Be extremely inconsistent. A variable named 'count' might be 'compter' in one place and 'kazu' in another.
+3.  **Complex and Visually Deceptive Character Substitution:** Do not just swap characters 1-to-1. Use a randomized mix of visually similar characters from various Unicode blocks (like Greek, Cyrillic, CJK radicals, box-drawing characters, etc.). For example, 'e' could become 'е' (Cyrillic), 'ε' (Greek), or a symbol like '∊'. Make it jarring.
+4.  **Radical Structural Disruption:** Dismantle the code's structure. Aggressively remove or replace critical syntax like colons, parentheses, and operators with misleading Unicode symbols (e.g., replace a colon with '⁝' or a parenthesis with '❨'). Indentation must be destroyed and randomized.
+5.  **Inject "Red Herrings" and Gibberish:** Add plausible-looking but nonsensical lines of code. More importantly, inject random snippets of text or proverbs from the source languages directly into the code to break any remaining semantic flow. For example, a line might look like: "για i in range(10) ... La vita è bella ... print(i)".
+6.  **Corrupt Formatting:** Use random line breaks within variable names or keywords. Merge lines together. Create a visual flow that is impossible for a parser to follow.
 
 Source Code to Obfuscate:
 \'\'\'python
 {{sourceCode}}
 \'\'\'
 
-Languages to use for replacement terms: {{#each languages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+Languages to use for replacement terms and gibberish: {{#each languages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
 
-Produce the obfuscated code. Do not include any explanations, just the code block.
+Produce the obfuscated code. Do not include any explanations, just the raw, mangled code block.
 `,
 });
 
