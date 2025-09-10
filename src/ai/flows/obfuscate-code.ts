@@ -55,7 +55,7 @@ Here are the techniques you MUST use:
 
 Source Code to Obfuscate:
 \'\'\'python
-{{sourceCode}}
+{{{sourceCode}}}
 \'\'\'
 
 Languages to use for replacement terms and gibberish: {{#each languages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
@@ -64,6 +64,7 @@ Produce the obfuscated code. Do not include any explanations, just the raw, mang
 `,
 });
 
+
 const obfuscateCodeFlow = ai.defineFlow(
   {
     name: 'obfuscateCodeFlow',
@@ -71,7 +72,28 @@ const obfuscateCodeFlow = ai.defineFlow(
     outputSchema: ObfuscateCodeOutputSchema,
   },
   async input => {
-    const {output} = await obfuscateCodePrompt(input);
-    return output!;
+    // This implements the advanced XOR obfuscation described by the user.
+    const payload = input.sourceCode;
+    
+    // 1. Choose a random, obscure Unicode character for the key.
+    // These are from less common scripts to confuse analysis tools.
+    const keyChars = ['ᚓ', '𓆉', 'ᐰ', '፱', '⡷', '⩠', '⫏', '⫑'];
+    const keyChar = keyChars[Math.floor(Math.random() * keyChars.length)];
+    const key = keyChar.repeat(payload.length);
+
+    // 2. Encrypt the payload with the XOR cipher.
+    let encryptedChars = [];
+    for (let i = 0; i < payload.length; i++) {
+        const encryptedVal = payload.charCodeAt(i) ^ key.charCodeAt(i);
+        encryptedChars.push(String.fromCharCode(encryptedVal));
+    }
+    const encryptedString = encryptedChars.join('');
+
+    // 3. Assemble the final Python one-liner.
+    // The lambda function is the self-contained decryptor.
+    // We use obscure characters for variable names in the lambda.
+    const obfuscatedCode = `exec((lambda 𓋹, 𓋺, 𝑓: ''.join([chr(ord(𓋹) ^ ord(𓋺)) for 𓋹, 𓋺 in zip(𓋹, 𓋺)]))('''${encryptedString}''', '''${key}'''))`;
+    
+    return { obfuscatedCode };
   }
 );
