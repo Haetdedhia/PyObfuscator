@@ -52,9 +52,9 @@ Here are the rules and techniques you must use:
 5.  **Inject "Red Herrings":** Add plausible-looking but nonsensical lines of code. These could be fake variable assignments or function calls that use the same obfuscated style but do nothing.
 
 Source Code to Obfuscate:
-\`\`\`python
+\'\'\'python
 {{sourceCode}}
-\`\`\`
+\'\'\'
 
 Languages to use for replacement terms: {{#each languages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
 
