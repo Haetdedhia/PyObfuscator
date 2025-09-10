@@ -51,6 +51,7 @@ Here are the techniques you MUST use:
 4.  **Radical Structural Disruption:** Dismantle the code's structure. Aggressively remove or replace critical syntax like colons, parentheses, and operators with misleading Unicode symbols (e.g., replace a colon with '⁝' or a parenthesis with '❨'). Indentation must be destroyed and randomized.
 5.  **Inject "Red Herrings" and Gibberish:** Add plausible-looking but nonsensical lines of code. More importantly, inject random snippets of text or proverbs from the source languages directly into the code to break any remaining semantic flow. For example, a line might look like: "για i in range(10) ... La vita è bella ... print(i)".
 6.  **Corrupt Formatting:** Use random line breaks within variable names or keywords. Merge lines together. Create a visual flow that is impossible for a parser to follow.
+7.  **Misleading Formatting**: Use formatting and line breaks that seem to imply a structure, but which is actually nonsensical.
 
 Source Code to Obfuscate:
 \'\'\'python
